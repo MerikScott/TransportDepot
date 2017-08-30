@@ -21,6 +21,10 @@ public class Vehicle {
         this.mileage = mileage;
     }
 
+    public Vehicle() {
+
+    }
+
     @Override
     public String toString() {
         return this.getClass().getCanonicalName() +
@@ -32,4 +36,43 @@ public class Vehicle {
                 ", driver=" + driver ;
     }
 
+    public String getRegistrationPlate() {
+        return registrationPlate;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public Integer getMaxCargoLoad() {
+        return maxCargoLoad;
+    }
+
+    public Integer getMaxPeopleLoad() {
+        return maxPeopleLoad;
+    }
+
+    public Integer getMileage() {
+        return mileage;
+    }
+
+    public TransmitterGSM getTransmitter() {
+        return transmitter;
+    }
+
+    public VehicleDriver getDriver() {
+        return driver;
+    }
+
+    public void setTransmitter(TransmitterGSM transmitter) {
+        this.transmitter = transmitter;
+    }
+
+    public void setDriver(VehicleDriver driver) {
+        this.driver = driver;
+    }
 }

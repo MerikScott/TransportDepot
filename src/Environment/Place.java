@@ -3,7 +3,6 @@ package Environment;
 public class Place {
     private double latitude;
     private double longitude;
-    private String placeDescription;
 
     public Place(double latitude, double longitude) {
         this.latitude = latitude;
@@ -26,18 +25,10 @@ public class Place {
         this.longitude = longitude;
     }
 
-    public String getPlaceDescription() {
-        return placeDescription;
-    }
-
-    public void setPlaceDescription(String placeDescription) {
-        this.placeDescription = placeDescription;
-    }
 
     @Override
     public String toString() {
         return latitude + " N, " +
-                longitude + " E," +
-                ", placeDescription='" + placeDescription;
+                longitude + " E";
     }
 }

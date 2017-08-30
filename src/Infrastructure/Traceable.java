@@ -1,6 +1,8 @@
 package Infrastructure;
 
+import Environment.Place;
+
 public interface Traceable {
 
-    public void getPosition();
+   // public Place getPosition();
 }
