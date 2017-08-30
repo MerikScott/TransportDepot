@@ -13,6 +13,7 @@ public class Vehicle {
     private Integer mileage;
     private TransmitterGSM transmitter;
     private VehicleDriver driver;
+    private Boolean available;
 
     public Vehicle(String registrationPlate, String make, Double weight, Integer mileage) {
         this.registrationPlate = registrationPlate;
@@ -74,5 +75,13 @@ public class Vehicle {
 
     public void setDriver(VehicleDriver driver) {
         this.driver = driver;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 }

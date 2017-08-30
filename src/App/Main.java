@@ -7,8 +7,10 @@ import Infrastructure.Vehicles.Vehicle;
 import Tools.DriversFactory;
 import Tools.PlacesFactory;
 import Tools.VehiclesFactory;
+import Tools.DepotOperations;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
+import com.sun.xml.internal.bind.v2.TODO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +21,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // avaliable vehicles list
+        // generate list of vehicles available in depot
+        // TODO  set place coordinates to depot (1N,1E)
         List<Vehicle> vehiclesList = VehiclesFactory.getVehicles();
         for (Vehicle vehicle : vehiclesList) {
             System.out.println(vehicle.toString());
         }
 
-        // available drivers list
+        // generate list of available drivers
         List<VehicleDriver> driversList = DriversFactory.getDrivers();
         for (VehicleDriver vehicleDriver : driversList) {
             System.out.println(vehicleDriver.toString());
@@ -37,43 +40,57 @@ public class Main {
             System.out.println(place.toString());
         }
 
-
-
+        // just chcecking and displaying the place
         Place place;
         place = placesList.get(0);
         System.out.println("Place number zero: ");
         System.out.println(place.getLatitude());
         System.out.println(place.getLongitude());
 
+        // just checking and setting transmitter00
         System.out.println("First transmitter set");
-        TransmitterGSM transmitter01 = new TransmitterGSM(0,0,0);
-        transmitter01.setLatitude(place.getLatitude());
-        transmitter01.setLongitude(place.getLongitude());
+        TransmitterGSM transmitter00 = new TransmitterGSM(0,0,0);
+        transmitter00.setLatitude(place.getLatitude());
+        transmitter00.setLongitude(place.getLongitude());
 
-        System.out.println("First transmitter position");
-        System.out.println(transmitter01.getLatitude());
-        System.out.println(transmitter01.getLongitude());
+        System.out.println("First transmitter position: latitude " +
+                transmitter00.getLatitude() + ", longitude: " +
+                transmitter00.getLongitude());
 
         System.out.println("_ - - - - - _ - - - - - _ - - - - - ");
-
-
-        // start to use vehicles, bind with drivers and transmitters
-        List<Vehicle> vehiclesInUseList = new ArrayList<>();
-        vehiclesInUseList.add(vehiclesList.get(0));
-        vehiclesList.remove(0);
 
         // get all details from first element of available vehicles list
         System.out.println(vehiclesList.get(0));
         // get registration from first element of available vehicles list
+        System.out.println(vehiclesList.get(0).getRegistrationPlate());
+
+
+        // start to use vehicles, bind with drivers and transmitters
+        // vehicles in use should be removed from list of vehicles available in the depot
+        List<Vehicle> vehiclesInUseList = new ArrayList<>();
+        vehiclesInUseList.add(vehiclesList.get(0));
+        vehiclesList.remove(0);
+
+
+
+        vehiclesInUseList.get(0).setDriver(driversList.get(0));
+        System.out.println("Set driver 0 to vehicleList 0");
+        System.out.println(vehiclesInUseList.get(0));
+        vehiclesInUseList.get(0).setTransmitter(transmitter00);
+
         Vehicle startVehicle = vehiclesList.get(0);
         startVehicle.setDriver(driversList.get(0));
-        System.out.println(startVehicle.getDriver().getName());
+        System.out.println(startVehicle.getDriver().getSurname());
+
+        String nameToCheck = "Doe";
 
 
+        System.out.println(vehiclesInUseList.size());
+        System.out.println(vehiclesInUseList.get(0).getDriver().getSurname());
+
+        DepotOperations.findVehicle(vehiclesInUseList, nameToCheck);
 
 
-
-        Vehicle vehicleInUse = new Vehicle();
 
 
 
@@ -85,5 +102,7 @@ public class Main {
 
 
     }
+
+
 }
 
