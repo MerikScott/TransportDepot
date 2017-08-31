@@ -42,5 +42,29 @@ public class SystemOperator {
         return nextTransmitter;
     }
 
+    public static Integer depotVehicles(List<Vehicle> vehiclesList) {
+        Integer availableVehicles = 0;
+        for (Vehicle vehicle : vehiclesList ) {
+            if (vehicle.getAvailable()) {
+                availableVehicles++;
+            }
+        }
+        return availableVehicles;
+    }
+
+    public static void removeVehicle(List<Vehicle> vehicleList, String registrationPlate) {
+        int recordToRemove = -1;
+        for (Vehicle vehicle : vehicleList) {
+            recordToRemove++;
+            System.out.println("Record to remove " + recordToRemove);
+            if (vehicle.getRegistrationPlate().equals(registrationPlate)) {
+                System.out.println("Vehicle with registration " + registrationPlate + " found");
+                vehicleList.remove(recordToRemove);
+                break;
+            }
+
+        }
+    }
+
 }
 
