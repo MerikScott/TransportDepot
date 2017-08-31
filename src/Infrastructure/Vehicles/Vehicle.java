@@ -15,11 +15,12 @@ public class Vehicle {
     private VehicleDriver driver;
     private Boolean available;
 
-    public Vehicle(String registrationPlate, String make, Double weight, Integer mileage) {
+    public Vehicle(String registrationPlate, String make, Double weight, Integer mileage, Boolean available) {
         this.registrationPlate = registrationPlate;
         this.make = make;
         this.weight = weight;
         this.mileage = mileage;
+        this.available = available;
     }
 
     public Vehicle() {
@@ -34,7 +35,8 @@ public class Vehicle {
                 ", weight=" + weight +
                 ", mileage=" + mileage +
                 ", transmitter=" + transmitter +
-                ", driver=" + driver ;
+                ", driver=" + driver +
+                ", available=" + available;
     }
 
     public String getRegistrationPlate() {
