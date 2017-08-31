@@ -35,7 +35,7 @@ public class Vehicle {
                 ", weight=" + weight +
                 ", mileage=" + mileage +
                 ", transmitter=" + transmitter +
-                ", driver=" + driver +
+               // ", driver=" + driver +
                 ", available=" + available;
     }
 

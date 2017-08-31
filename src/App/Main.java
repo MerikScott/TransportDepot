@@ -111,16 +111,18 @@ public class Main {
         if ((vehicleToSend > vehiclesNumber) || (vehiclesList.get(vehicleToSend).getAvailable() == false)) {
             System.out.println("Upps... something went wrong, there is no such vehicle available");
         } else {
-            vehiclesList.get(vehicleToSend).setAvailable(false); // not available any more
-            vehiclesList.get(vehicleToSend).setDriver(driversList.get(driverToSend)); // driver binded
-            driversList.get(driverToSend).setAvailable(false); // not available any more
-            vehiclesList.get(vehicleToSend).setTransmitter(transmittersList.get(nextTransmitter));
-            transmittersList.get(nextTransmitter).setLatitude(placesList.get(0).getLatitude());
-            transmittersList.get(nextTransmitter).setLongitude(placesList.get(0).getLongitude());
-            nextTransmitter++;
-            //System.out.println(vehiclesList.get(vehicleToSend).toString());
+            SystemOperator.sendVehicle(vehiclesList, vehicleToSend, driversList, driverToSend, transmittersList, nextTransmitter, placesList );
+//            vehiclesList.get(vehicleToSend).setAvailable(false); // not available any more
+//            vehiclesList.get(vehicleToSend).setDriver(driversList.get(driverToSend)); // driver binded
+//            driversList.get(driverToSend).setAvailable(false); // not available any more
+//            vehiclesList.get(vehicleToSend).setTransmitter(transmittersList.get(nextTransmitter));
+//            transmittersList.get(nextTransmitter).setLatitude(placesList.get(0).getLatitude());
+//            transmittersList.get(nextTransmitter).setLongitude(placesList.get(0).getLongitude());
+//            nextTransmitter++;
+//            //System.out.println(vehiclesList.get(vehicleToSend).toString());
 
         }
+
 
         for (Vehicle vehicle : vehiclesList) {
             System.out.println(vehicle.toString());
@@ -165,6 +167,8 @@ public class Main {
 
 
     }
+
+
 
 
 }
